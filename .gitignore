@@ -1,0 +1,37 @@
+# Environment / secrets — NEVER commit
+.env
+*.env
+.env.*
+!.env.example
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Build / dist
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Output files generated at runtime
+discrepancy_report.txt
+discrepancy_report.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

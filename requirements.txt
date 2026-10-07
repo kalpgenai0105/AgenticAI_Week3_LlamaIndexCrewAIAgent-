@@ -1,0 +1,30 @@
+# Contract-Invoice Audit System – Python dependencies
+#
+# Install with:  pip install -r requirements.txt
+# Python >= 3.11 recommended (uses X | Y union syntax in type hints)
+
+# ── CrewAI framework ──────────────────────────────────────────────────────────
+crewai>=0.80.0,<2.0.0          # core: Agent, Task, Crew, Process, LLM, @tool
+
+# ── LlamaIndex — document loading + RAG query engine ─────────────────────────
+llama-index-core>=0.12.0       # SimpleDirectoryReader, VectorStoreIndex, Settings
+llama-index-readers-file>=0.4.0  # PDFReader (used by SimpleDirectoryReader for .pdf)
+
+# LlamaIndex LLM + embedding integrations (install the one matching your MODEL= setting)
+llama-index-llms-openai>=0.3.0          # if MODEL=gpt-*
+llama-index-embeddings-openai>=0.2.0    # if MODEL=gpt-* (or as embedding backend for Anthropic)
+llama-index-llms-gemini>=0.4.0          # if MODEL=gemini/*
+llama-index-embeddings-gemini>=0.1.0    # if MODEL=gemini/*
+llama-index-llms-anthropic>=0.6.0       # if MODEL=claude-*
+llama-index-embeddings-huggingface>=0.4.0  # fallback local embeddings for Anthropic users
+
+# ── Data validation ───────────────────────────────────────────────────────────
+pydantic>=2.0.0                # v2 required for model_validate_json / model_dump
+
+# ── Environment / configuration ───────────────────────────────────────────────
+python-dotenv>=1.0.0           # loads .env into os.environ
+
+# ── LLM providers (install only the one(s) you use) ──────────────────────────
+google-generativeai>=0.8.0     # required if MODEL=gemini/*
+anthropic>=0.40.0              # required if MODEL=claude-*
+openai>=1.50.0                 # required if MODEL=gpt-*

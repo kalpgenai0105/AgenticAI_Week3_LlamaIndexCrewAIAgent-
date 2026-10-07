@@ -1,0 +1,18 @@
+Build a working multi-agent system using the CrewAI framework (Python) that extracts and analyzes data from a contract and an invoice, then produces a discrepancy report covering the individual items on the invoice.
+
+I have two PDF files attached: `purchase_terms_conditions.pdf` (the contract/purchase terms) and `sample_invoice.pdf` (the invoice to check against those terms). Read both files first and let their actual contents drive the design. Do not assume a document layout; discover the real structure, terms, and line items from the PDFs.
+
+**What the system must do**
+- Extract the relevant commercial terms from `purchase_terms_conditions.pdf` (for example pricing, quantities, payment terms, discounts, taxes, delivery or penalty clauses, and anything else that affects what an invoice should contain) and extract the invoice header details and line items from `sample_invoice.pdf`.
+- Compare the invoice against the contract item by item and identify every discrepancy, such as pricing mismatches, quantity differences, incorrect totals, tax or discount errors, payment-term conflicts, and items billed that the contract does not cover.
+- Produce a discrepancy report that, for each flagged item, states what the invoice says, what the contract says, the nature and size of the difference, and the contract clause it relates to. Include a short overall summary of findings. If no discrepancies are found for an item, say so explicitly rather than omitting it.
+
+**Implementation requirements**
+- Use CrewAI's `Agent`, `Task`, and `Crew` constructs with distinct agent roles that match the work (such as contract data extraction, invoice data extraction, and discrepancy analysis/reporting), and pass data between tasks through task context or structured outputs.
+- Implement PDF reading as custom CrewAI tools so the agents read the real files instead of relying on pasted text. Choose a suitable PDF parsing library and handle tables and multi-page documents.
+- Use structured outputs (for example Pydantic models) for extracted terms and line items so comparisons are reliable rather than free-text guesses.
+- Make the LLM configuration easy to change, read API keys from environment variables, and never hardcode secrets.
+- Write the final discrepancy report to a file in a readable format, and also print it to the console.
+
+**Deliverables**
+Give me complete, runnable code (project structure, dependencies/`requirements.txt`, agent and task definitions, tools, and the entry-point script), plus brief instructions to install and run it against my two PDFs. Validate that the code is consistent with the current CrewAI API, and note any assumptions you had to make about the documents. Include detailed comments in the Python code.
